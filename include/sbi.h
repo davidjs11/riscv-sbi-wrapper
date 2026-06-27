@@ -1,8 +1,11 @@
 /*   sbi.h   */
 
+/* Internal SBI wrappers. */
+
 #pragma once
 
 #include <stdint.h>
+#include <stddef.h>
 
 typedef struct sbiret {
     long error;
@@ -336,3 +339,26 @@ static inline uintptr_t _legacy_sbi_call6(
 #define SBI_ERR_TIMEOUT           -12
 #define SBI_ERR_IO                -13
 #define SBI_ERR_DENIED_LOCKED     -14
+
+static const char *sbi_error_messages[] = {
+    [-SBI_SUCCESS] = "Success",
+    [-SBI_ERR_FAILED] = "Fail",
+    [-SBI_ERR_NOT_SUPPORTED] = "Not supported",
+    [-SBI_ERR_INVALID_PARAM] = "Invalid parameter",
+    [-SBI_ERR_DENIED] = "Denied",
+    [-SBI_ERR_INVALID_ADDRESS] = "Invalid address",
+    [-SBI_ERR_ALREADY_AVAILABLE] = "Already available",
+    [-SBI_ERR_ALREADY_STARTED] = "Already started",
+    [-SBI_ERR_ALREADY_STOPPED] = "Already stopped",
+    [-SBI_ERR_NO_SHMEM] = "No shared memory available",
+    [-SBI_ERR_INVALID_STATE] = "Invalid state",
+    [-SBI_ERR_BAD_RANGE] = "Bad range",
+    [-SBI_ERR_TIMEOUT] = "Timeout",
+    [-SBI_ERR_IO] = "I/O error",
+    [-SBI_ERR_DENIED_LOCKED] = "Locked",
+};
+
+static inline const char *sbi_strerror(long error)
+{
+    return (0 <= error && error < 15) ? sbi_error_messages[error] : NULL;
+}
