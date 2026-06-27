@@ -14,25 +14,29 @@ SECTIONS
     . = 0x80200000;
 
     .text : {
+        *(.text.boot)
         *(.text)
         *(.text.*)
     } :text
+
+    .rodata : {
+        *(.rodata)
+        *(.rodata.*)
+    } :rodata
 
     .data : {
         *(.data)
         *(.data.*)
     } :data
 
-    .rodata : {
-        *(.rodata)
-        *(.rodata.*)
-    } :rodata
-    
     .bss (NOLOAD) : {
         *(.bss)
         *(.bss.*)
     } :data
 
-    . += 4K;
-    stack_top = .;
+    . = ALIGN(16);
+    .stack (NOLOAD) : {
+        . += 4K;
+        stack_top = .;
+    } :data
 }

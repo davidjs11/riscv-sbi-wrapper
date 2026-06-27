@@ -1,3 +1,3 @@
-layout src
-target remote :1234
 file main.elf
+target remote :1234
+layout src

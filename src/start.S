@@ -1,6 +1,6 @@
 /*   start.S   */
 
-.section .text
+.section .text.boot
 .global _start
 _start:
     la sp, stack_top

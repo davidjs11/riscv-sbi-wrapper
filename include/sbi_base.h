@@ -51,17 +51,17 @@ static inline struct sbiret sbi_get_mimpid(void)
 }
 
 /* SBI Spec. ver 3.0 - Section 4.9 */
-static const char *sbi_implementation_names[] = {
-    [0] = "Berkley Boot Loader (BBL)",
-    [1] = "OpenSBI",
-    [2] = "Xvisor",
-    [3] = "KVM",
-    [4] = "RustSBI",
-    [5] = "Diosix",
-    [6] = "Coffer",
-    [7] = "Xen Project",
-    [8] = "PolarFire Hart Software Services",
-    [9] = "coreboot",
-    [10] = "oreboot",
-    [11] = "bhvye",
-};
+// static const char *sbi_implementation_names[] = {
+//     [0] = "Berkley Boot Loader (BBL)",
+//     [1] = "OpenSBI",
+//     [2] = "Xvisor",
+//     [3] = "KVM",
+//     [4] = "RustSBI",
+//     [5] = "Diosix",
+//     [6] = "Coffer",
+//     [7] = "Xen Project",
+//     [8] = "PolarFire Hart Software Services",
+//     [9] = "coreboot",
+//     [10] = "oreboot",
+//     [11] = "bhvye",
+// };
